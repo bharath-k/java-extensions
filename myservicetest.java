@@ -18,28 +18,24 @@ public class myservicetest
 
     public static void main(String argv[])
     {
-        myservice service = example.get_service();
-        System.out.println("String value is " + service.getStringEntry());
+        String service = example.get_service();
+        System.out.println("String value is " + service);
 
-        SWIGTYPE_p_p_myservice service_array = example.get_service_array();
-        int count = example.get_count(service_array);
-        for(int i=0; i < count; i++)
+        String[] service_array = example.get_service_array();
+        for(int i=0; i < service_array.length; i++)
         {
-            service = example.get_index_value(service_array, i);
-            System.out.println("String value is " + service.getStringEntry());
+            service = service_array[i];
+            System.out.println("String value is " + service);
         }
 
-        container_service cs = example.fillup_service_proxy(0);
-        service = cs.getService();
-        System.out.println("String value is " + service.getStringEntry());
+        String service2  = example.fillup_service_proxy(0);
+        System.out.println("String value is " + service2);
 
-        container_service_array csarray = example.fillup_service_array_proxy(0);
-        service_array = csarray.getServices();
-        count = example.get_count(service_array);
-        for(int i=0; i < count; i++)
+        service_array = example.fillup_service_array_proxy(0);
+        for(int i=0; i < service_array.length; i++)
         {
-            service = example.get_index_value(service_array, i);
-            System.out.println("String value is " + service.getStringEntry());
+            service = service_array[i];
+            System.out.println("String value is " + service);
         }
     }
 }

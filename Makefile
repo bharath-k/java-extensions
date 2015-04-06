@@ -5,7 +5,7 @@
 #
 
 SWIG        = /u/kumarabh/Install/swig-3.0.2/preinst-swig
-SRCS        = example.c example_wrap.c
+SRCS        = example.c example_wrap.c examplejni.c
 SRCDIR_SRCS = ./
 TARGET      = example
 INTERFACE   = example.i
@@ -26,7 +26,7 @@ JAVA_LIBPREFIX = lib
 JAVASO =.so
 JAVALDSHARED = $(LDSHARED)
 JAVACXXSHARED = $(CXXSHARED)
-JAVACFLAGS = 
+JAVACFLAGS =
 JAVA = java
 JAVAC = javac -d .
 JAVA_JAR = example.jar
@@ -76,5 +76,5 @@ java_version:
 
 java_clean:
 	rm -f *_wrap* *~ .~* *.class `find . -name \*.java | grep -v myservicetest.java`
-	rm -f core 
+	rm -f core
 	rm -f *.o *.so
