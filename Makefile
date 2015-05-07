@@ -13,6 +13,7 @@ INTERFACE   = example.i
 SWIGOPT     = -package org.me
 JAVASRCS    = *.java
 JAVA_INCLUDE= -I"/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/include" -I"/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/include/linux"
+#JAVA_INCLUDE= -I"/usr/lib/jvm/default-java/include" -I"/usr/lib/jvm/default-java/include/linux"
 
 CC         = gcc
 CFLAGS     =
@@ -58,7 +59,7 @@ java: $(SRCS)
 # Compile java files
 # ----------------------------------------------------------------
 
-java_compile: $(SRCDIR_SRCS)
+java_compile: $(JAVASRCS)
 	$(COMPILETOOL) $(JAVAC) $(JAVACFLAGS) $(addprefix $(SRCDIR),$(JAVASRCS))
 
 java_test:
@@ -76,7 +77,7 @@ java_version:
 	$(JAVAC) -version || echo "Unknown javac version"
 
 java_clean:
-	rm -f *_wrap* *~ .~* *.class `find . -name \*.java | grep -v myservicetest.java | grep -v myservice.java`
+	rm -f *_wrap* *~ .~* *.class `find . -name \*.java | grep -v myservicetest.java | grep -v myservice.java | grep -v myserviceexception.java`
 	rm -f core
 	rm -Rf org
 	rm -f *.o *.so

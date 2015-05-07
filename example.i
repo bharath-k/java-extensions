@@ -95,6 +95,13 @@
     if(result->retCode != 0)
     {
         // TODO: Throw an exception in java.
+        (*jenv)->ExceptionClear(jenv);
+        jclass excep = (*jenv)->FindClass(jenv, "org/me/myserviceexception");
+        if (excep)
+        {
+            (*jenv)->ThrowNew(jenv, excep, "an error has occured!");
+        }
+        return NULL;
     }
 
     MYService *service = result->service;
@@ -134,6 +141,13 @@
     if(result->retCode != 0)
     {
         // TODO: Throw an exception in java.
+        (*jenv)->ExceptionClear(jenv);
+        jclass excep = (*jenv)->FindClass(jenv, "org/me/myserviceexception");
+        if (excep)
+        {
+            (*jenv)->ThrowNew(jenv, excep, "an error has occured!!");
+        }
+        return NULL;
     }
 
     MYService **services = result->services;
