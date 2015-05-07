@@ -1,5 +1,7 @@
 // import desco.systems.example;
 
+package org.me;
+
 public class myservicetest
 {
 
@@ -19,27 +21,25 @@ public class myservicetest
     public static void main(String argv[])
     {
         myservice service = example.get_service();
-        System.out.println("String value is " + service.getStringEntry());
+        System.out.println("String value is " + service.getstringEntry());
 
-        SWIGTYPE_p_p_myservice service_array = example.get_service_array();
-        int count = example.get_count(service_array);
-        for(int i=0; i < count; i++)
+        myservice[] service_array = example.get_service_array();
+        for(int i=0; i < service_array.length; i++)
         {
-            service = example.get_index_value(service_array, i);
-            System.out.println("String value is " + service.getStringEntry());
+            service = service_array[i];
+            System.out.println("String value is " + service.getstringEntry());
         }
 
-        container_service cs = example.fillup_service_proxy(0);
-        service = cs.getService();
-        System.out.println("String value is " + service.getStringEntry());
+        myservice service2  = example.fillup_service_proxy(0);
+        System.out.println("String value is " + service.getstringEntry());
 
-        container_service_array csarray = example.fillup_service_array_proxy(0);
-        service_array = csarray.getServices();
-        count = example.get_count(service_array);
-        for(int i=0; i < count; i++)
+
+        myservice[] service_array2 = example.fillup_service_array_proxy(0);
+        for(int i=0; i < service_array2.length; i++)
         {
-            service = example.get_index_value(service_array, i);
-            System.out.println("String value is " + service.getStringEntry());
+            myservice service3 = service_array2[i];
+            System.out.println("String value is " + service3.getstringEntry());
         }
+
     }
 }
