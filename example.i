@@ -10,9 +10,7 @@
 
 %inline %{
 
-
 %}
-
 
 // -------------------------- get_service ------------------------------------
 // Define your typemaps before includeing the required methods.
@@ -119,7 +117,6 @@
     free(service);
     // Free original result
     free(result);
-
 }
 
 %typemap(jni) Container_Service * "jobject"
@@ -129,7 +126,6 @@
 %typemap(javaout) Container_Service * {
     return $jnicall;
 }
-
 
 // -------------------------- fillup_service_array ----------------------------
 %typemap(out) Container_Service_Array *
